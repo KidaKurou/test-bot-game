@@ -61,7 +61,7 @@ bot.on('callback_query', async msg => {
     if (data === '/again') {
         return startGame(chatId);
     }
-    const user = UserModel.findOne({ chatId });
+    const user = await UserModel.findOne({ chatId });
     if (data == chats[chatId]) {
         user.rightAnswers++;
         await bot.sendMessage(chatId, "You are right", againOptions);
